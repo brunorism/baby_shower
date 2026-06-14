@@ -1,4 +1,4 @@
-let url = 'https://api.sheety.co/201604539b99b313863730ba6d4aa7c2/babyShower/giftList';
+let url = API_URL;
 
 async function getGifts() {
     try {
