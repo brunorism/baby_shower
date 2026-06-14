@@ -1,14 +1,23 @@
+name: Deploy static content to Pages
+
+on:
+    push:
+        branches: [ "master" ]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Inject API URL
         run: |
           # This replaces the placeholder with your actual secret URL in the JS file
-          sed -i 's|API_URL|${{ secrets.SHEETY_URL }}|g' ../../app.js
+          sed -i 's|API_URL|${{ secrets.SHEETY_URL }}|g' ./app.js
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v5
         with:
-          folder: ../../ # The folder your files are in
+          folder: . # The folder your files are in
           branch: master
