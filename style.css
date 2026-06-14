@@ -1,0 +1,136 @@
+body {
+    font-family: "Montserrat";
+}
+
+ul {
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+#title_text {
+    font-weight: bold;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+#gift1:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift2:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift3:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift4:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift5:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift6:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift7:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift7:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift8:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift9:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift10:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift11:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift12:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift12:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift13:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift14:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift15:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift16:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift17:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift18:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift19:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift20:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift21:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
+
+#gift22:checked + label {
+    color: gray;
+    text-decoration: line-through;
+}
