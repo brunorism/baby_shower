@@ -1,18 +1,47 @@
-body {
-    font-family: "Montserrat";
+* {
+    margin: 0;
+    padding: 0;
 }
 
-ul {
-    padding-left: 10px;
-    padding-bottom: 20px;
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/background_image.png');
+    background-size: cover;
+    background-position: left-bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #title_text {
+    color: #4c321c;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
     font-weight: bold;
+    font-size: 3rem;
+    z-index: 1;
 }
 
-input {
-    margin-bottom: 10px;
+#title_text:before {
+    content: "";
+    inset: -6;
+    backdrop-filter: blur(6px);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.45)
+    z-index: -1;
+}
+
+#gift_list {
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(1px);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    margin: 30px;
 }
 
 #gift1:checked + label {
