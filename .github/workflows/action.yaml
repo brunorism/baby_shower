@@ -22,7 +22,7 @@ jobs:
       - name: Inject API URL
         run: |
           # This replaces the placeholder with your actual secret URL in the JS file
-          sed -i 's/API_URL/${{ secrets.SHEETY_URL }}/g' ./app.js
+          sed -i "s/API_URL/${{ secrets.SHEETY_URL }}/g" ./app.js
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
