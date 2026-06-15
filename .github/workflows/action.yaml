@@ -25,12 +25,10 @@ jobs:
           sed -i 's|API_URL|${{ secrets.SHEETY_URL }}|g' ./app.js
 
       - name: Upload Artifact
-        uses: actions/upload-page-artifacts@v4
-        with:
-          path: /home/runner/work/_temp/artifact.tar
+        uses: actions/upload-page-artifacts@v2
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
