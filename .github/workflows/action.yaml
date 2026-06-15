@@ -24,6 +24,9 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifacts@v3
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-            with: github-pages
+        with: github-pages
