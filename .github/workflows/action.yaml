@@ -24,6 +24,11 @@ jobs:
           # This replaces the placeholder with your actual secret URL in the JS file
           sed -i 's|API_URL|${{ secrets.SHEETY_URL }}|g' ./app.js
 
+      - name: Upload Artifact
+        uses: actions/upload-page-artifacts@v4
+        with:
+          path: /home/runner/work/_temp/artifact.tar
+
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
