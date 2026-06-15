@@ -21,8 +21,8 @@ jobs:
           # This replaces the placeholder with your actual secret URL in the JS file
           sed -i 's|API_URL|${{ secrets.SHEETY_URL }}|g' ./app.js
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v5
-        with:
-          folder: . # The folder your files are in
-          branch: master
+        uses: actions/deploy-pages@v4
