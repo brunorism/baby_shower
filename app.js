@@ -1,4 +1,4 @@
-let url = API_URL;
+let url = "API_URL";
 
 async function getGifts() {
     try {
