@@ -1,27 +1,17 @@
 let url = "API_URL";
 
-async function getGifts() {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const giftList = document.getElementById('gift-list');
+
+function renderItems(items) {
+    const giftList = document.getElementById('gift-list');
+    giftList.innerHTML = '';
+
+    items.forEach(gift => {
+        const isClaimed = gift.taken === 1;
         
-        console.log(data);
-        // Clear the "Loading" message
-        giftList.innerHTML = '';
-
-        // Sheety usually wraps data in a key named after your sheet (e.g., data.folha1)
-        // Adjust 'data.gifts' to match your Sheety endpoint's output
-        const items = data[Object.keys(data)[0]];
-
-        items.forEach(gift => {
-            const isClaimed = gift.taken === 1;
-            
-            console.log(`${gift.name} is taken: ${isClaimed}`);
-            // Create the HTML structure for each row
-            const listItem = document.createElement('li');
-            listItem.style.listStyle = 'none'; // Keeps it clean
-            listItem.innerHTML = `
+        // Create the HTML structure for each row
+        const listItem = document.createElement('li');
+        listItem.style.listStyle = 'none';
+        listItem.innerHTML = `
                 <input type="checkbox" 
                        id="gift${gift.id}" 
                        value="${gift.id}" 
@@ -32,8 +22,24 @@ async function getGifts() {
                 </label>
                 <br>
             `;
-            giftList.appendChild(listItem);
-        });
+        giftList.appendChild(listItem);
+    });
+}
+
+async function getGifts() {
+    try {
+        let items = JSON.parse(localStorage.getItem('items'));
+        if (!items) {
+            console.log("[INFO] Calling API...");
+            const response = await fetch(url);
+            const data = await response.json();
+            items = data.giftList;
+            console.log(items);
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+        console.log("[INFO] Rendering items...");
+        renderItems(items);
+
     } catch (error) {
         console.error('Erro ao carregar presentes:', error);
     }
@@ -60,16 +66,14 @@ async function confirmClaim(id, name) {
 
             if (response.ok) {
                 alert('Obrigado! O item foi marcado na lista.');
-                location.reload(); // Refresh to show it as disabled
+                location.reload();
             }
         } catch (error) {
             alert(`Erro ao salvar. Tente novamente. (${error})`);
         }
     } else {
-        // Uncheck the box if they click "Cancel"
         document.getElementById(`gift${id}`).checked = false;
     }
 }
 
-// Start the process
 getGifts();
