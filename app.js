@@ -1,5 +1,4 @@
-// let url = "API_URL";
-let url = 'https://api.sheety.co/201604539b99b313863730ba6d4aa7c2/babyShower/giftList';
+let url = "API_URL";
 let items = { 
     gifts:     JSON.parse(localStorage.getItem('items'))?.gifts,
     timestamp: JSON.parse(localStorage.getItem('items'))?.timestamp
