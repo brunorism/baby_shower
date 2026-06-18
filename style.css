@@ -36,7 +36,7 @@ body {
 }
 
 #gift_list {
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(1px);
     padding: 40px;
     border-radius: 16px;
