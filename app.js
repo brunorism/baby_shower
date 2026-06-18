@@ -1,5 +1,5 @@
 let url = "API_URL";
-
+let items = JSON.parse(localStorage.getItem('items'));
 
 function renderItems(items) {
     const giftList = document.getElementById('gift-list');
@@ -28,13 +28,11 @@ function renderItems(items) {
 
 async function getGifts() {
     try {
-        let items = JSON.parse(localStorage.getItem('items'));
         if (!items) {
             console.log("[INFO] Calling API...");
             const response = await fetch(url);
             const data = await response.json();
             items = data.giftList;
-            console.log(items);
             localStorage.setItem('items', JSON.stringify(items));
         }
         console.log("[INFO] Rendering items...");
@@ -47,7 +45,6 @@ async function getGifts() {
 
 async function confirmClaim(id, name) {
     const confirmation = confirm(`O presente escolhido foi: "${name}"?`);
-    
     if (confirmation) {
         try {
             const updateUrl = `${url}/${id}`;
@@ -57,7 +54,6 @@ async function confirmClaim(id, name) {
                 }
             };
 
-            console.log(JSON.stringify(body));
             const response = await fetch(updateUrl, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -66,6 +62,7 @@ async function confirmClaim(id, name) {
 
             if (response.ok) {
                 alert('Obrigado! O item foi marcado na lista.');
+                localStorage.removeItem('items');
                 location.reload();
             }
         } catch (error) {
