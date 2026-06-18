@@ -80,7 +80,7 @@ function main() {
 
     if (!items.gifts) {
         getGifts();
-    } else if ((Date.now() - items.timestamp)/1000 >= timeLimit) {
+    } else if ((Date.now() - items.timestamp) >= timeLimit) {
         localStorage.remove('items')
         getGifts();
     } else {
