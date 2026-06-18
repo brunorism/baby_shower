@@ -1,13 +1,18 @@
-let url = "API_URL";
-let items = JSON.parse(localStorage.getItem('items'));
+// let url = "API_URL";
+let url = 'https://api.sheety.co/201604539b99b313863730ba6d4aa7c2/babyShower/giftList';
+let items = { 
+    gifts:     JSON.parse(localStorage.getItem('items'))?.gifts,
+    timestamp: JSON.parse(localStorage.getItem('items'))?.timestamp
+};
 
 function renderItems(items) {
     const giftList = document.getElementById('gift-list');
     giftList.innerHTML = '';
 
+    console.log("[INFO] Rendering items...");
     items.forEach(gift => {
         const isClaimed = gift.taken === 1;
-        
+
         // Create the HTML structure for each row
         const listItem = document.createElement('li');
         listItem.style.listStyle = 'none';
@@ -28,16 +33,14 @@ function renderItems(items) {
 
 async function getGifts() {
     try {
-        if (!items) {
-            console.log("[INFO] Calling API...");
-            const response = await fetch(url);
-            const data = await response.json();
-            items = data.giftList;
-            localStorage.setItem('items', JSON.stringify(items));
-        }
-        console.log("[INFO] Rendering items...");
-        renderItems(items);
+        console.log("[INFO] Calling API...");
+        const response = await fetch(url);
+        const data = await response.json();
+        items.gifts = data.giftList;
+        items.timestamp = Date.now();
+        localStorage.setItem('items', JSON.stringify(items));
 
+        renderItems(items.gifts);
     } catch (error) {
         console.error('Erro ao carregar presentes:', error);
     }
@@ -73,4 +76,17 @@ async function confirmClaim(id, name) {
     }
 }
 
-getGifts();
+function main() {
+    let timeLimit = 60 * 30 * 1000;
+
+    if (!items.gifts) {
+        getGifts();
+    } else if ((Date.now() - items.timestamp)/1000 >= timeLimit) {
+        localStorage.remove('items')
+        getGifts();
+    } else {
+        renderItems(items.gifts);
+    }
+}
+
+main();
